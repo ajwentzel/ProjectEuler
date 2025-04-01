@@ -1,16 +1,35 @@
 #pragma once
 
+#include "Helper.h"
+
+#include <unordered_map>
+
 /*
 *  2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+ANSWER: 232792560
 */
 
 namespace Problem5
 {
+	int getSmallestMultiple(const std::vector<uint64_t>& numbers);
+
 	int run()
 	{
-		int start =  2520;
+		/* NEW SOLUTION */
+		std::vector<uint64_t> numbers;
+		for (int i = 1; i <= 20; i++)
+		{
+			numbers.push_back(i);
+		}
+
+		return getSmallestMultiple(numbers);
+		
+		/* ORIGINAL SOLUTION */
+
+		int start = 2520;
 
 		while (true)
 		{
@@ -35,6 +54,57 @@ namespace Problem5
 
 		return start;
 	};
+
+	int getSmallestMultiple(const std::vector<uint64_t>& numbers)
+	{
+		printf("hello there from get smallest multiple\n");
+		std::unordered_map<uint64_t, uint64_t> primeFactors;
+
+		for (auto& it1 : numbers)
+		{
+			std::vector<uint64_t> factors =	Helper::getPrimeFactors(it1);
+
+			std::unordered_map<uint64_t, uint64_t> currentPrimeFactors;
+
+
+			// puts the factors of the number into an undordered map with the number of factors
+			for (auto& it2 : factors)
+			{
+				if (currentPrimeFactors.find(it2) == currentPrimeFactors.end())
+				{
+					// it doesn't exist
+					currentPrimeFactors.insert({ it2, 1 });
+				}
+				else
+				{
+					currentPrimeFactors.at(it2) = currentPrimeFactors.at(it2) + 1;
+				}
+			}
+
+			for (auto& it3 : currentPrimeFactors)
+			{
+				if (primeFactors.find(it3.first) == primeFactors.end())
+				{
+					// it doesn't exist
+					primeFactors.insert({ it3.first, it3.second });
+				}
+				else
+				{
+					if (it3.second > primeFactors.at(it3.first))
+					{
+						primeFactors.at(it3.first) = it3.second;
+					}
+				}
+			}
+		}
+
+		uint64_t sum = 1;
+		for (auto& it4 : primeFactors)
+		{
+			sum *= std::pow(it4.first, it4.second);
+		}
+		return sum;
+	}
 }
 
 /*
