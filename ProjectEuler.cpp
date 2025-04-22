@@ -7,12 +7,15 @@
 #include "Problem3.h"
 #include "Problem4.h"
 #include "Problem5.h"
+#include "Problem6.h"
+
+#include <regex>
 
 int main()
 {
 	std::cout << "Hello World!\n";
 
-	std::cout << "THE ANSWER IS: " << Problem5::run();
+	std::cout << "THE ANSWER IS: " << Problem6::run(1, 100);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
