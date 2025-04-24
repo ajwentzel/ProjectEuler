@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\ajwen\OneDrive\Documents\Dev\Practice\ProjectEuler\Solutions\include;C:\Users\ajwen\OneDrive\Documents\Dev\Practice\ProjectEuler\Solutions;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -128,16 +131,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Helper.cpp" />
-    <ClCompile Include="Problem6.cpp" />
     <ClCompile Include="ProjectEuler.cpp" />
+    <ClCompile Include="Solutions\source\Problem6.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helper.h" />
-    <ClInclude Include="Problem2.h" />
-    <ClInclude Include="Problem3.h" />
-    <ClInclude Include="Problem4.h" />
-    <ClInclude Include="Problem5.h" />
-    <ClInclude Include="Problem6.h" />
+    <ClInclude Include="Solutions\include\Problem1.h" />
+    <ClInclude Include="Solutions\include\Problem2.h" />
+    <ClInclude Include="Solutions\include\Problem3.h" />
+    <ClInclude Include="Solutions\include\Problem4.h" />
+    <ClInclude Include="Solutions\include\Problem5.h" />
+    <ClInclude Include="Solutions\include\Problem6.h" />
+    <ClInclude Include="Solutions\include\Problem7.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

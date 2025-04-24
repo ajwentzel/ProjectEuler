@@ -4,7 +4,7 @@
 
 bool Helper::isPrime(int64_t number)
 {
-	if (number == 1) return true;
+	if (number == 1 || number == 0) return false;
 
 	int64_t half = sqrt(number);
 
